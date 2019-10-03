@@ -24,7 +24,12 @@ export class Api {
             method: 'POST',
             body: formData
         };
-        return await(await fetch(this.base_url + path, options)).json()
+        const response = await fetch(this.base_url + path, options);
+        const result = await response.json();
+        if(!response.ok) {
+            throw result;
+        }
+        return result
     };
 
     async game(id: number): Promise<Models.Game> {
@@ -51,7 +56,7 @@ export class Api {
         return this.token = this.post('/player/auth', {username});
     };
 
-    async addPlayer(id: number, username: string): Promise<Models.Token> {
+    async addPlayer(username: string): Promise<Models.Token> {
         return this.token = this.post('/player/add', {username});
     };
 

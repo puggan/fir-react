@@ -20,3 +20,14 @@
 .App-link {
   color: #09d3ac;
 }
+
+label {
+  display: block;
+}
+
+p.error {
+  color: red;
+  border: solid red 1px;
+  background: pink;
+  font-weight: bold;
+}
